@@ -22,6 +22,7 @@ private:
 public:
     //Constructor mặc định (không cần destructor tự viết: vector + shared_ptr tự dọn)
     PhongBan();
+    //Constructor có tham số
     PhongBan(string maPhongBan, string tenPhongBan);
 
     // Nhập, xuất, cập nhật thông tin phòng ban (không đụng tới danh sách nhân viên)
