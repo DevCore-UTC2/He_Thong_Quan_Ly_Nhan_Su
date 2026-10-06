@@ -20,7 +20,7 @@ private:
     vector<shared_ptr<NhanVien>> danhSachNhanVien;
 
 public:
-    //Constructor (không cần destructor tự viết: vector + shared_ptr tự dọn)
+    //Constructor mặc (không cần destructor tự viết: vector + shared_ptr tự dọn)
     PhongBan();
     PhongBan(string maPhongBan, string tenPhongBan);
 
