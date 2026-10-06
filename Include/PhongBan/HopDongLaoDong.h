@@ -20,7 +20,7 @@ private:
     shared_ptr<NhanVien> nguoiLaoDong;
 
 public:
-    //Constructor
+    //Constructor mặc 
     HopDongLaoDong();
     HopDongLaoDong(string maHopDong, string loaiHopDong, string ngayKyKet,
                    double luongThoaThuan, shared_ptr<NhanVien> nguoiLaoDong);
