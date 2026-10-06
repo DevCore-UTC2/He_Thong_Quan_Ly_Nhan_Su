@@ -3,7 +3,7 @@
 #include <limits>
 
 //Khởi tạo constructor
-HopDongLaoDong::HopDongLaoDong()
+HopDongLaoDong::HopDongLaoDong() 
 {
     maHopDong = "";
     loaiHopDong = "";
