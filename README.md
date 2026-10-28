@@ -25,7 +25,67 @@
   
   Bắt ngoại lệ và kiểm định nghiệp vụ: Phân cấp ngoại lệ qua LoiNghiepVu cùng các lớp con LoiChamCong, LoiDuLieuKhongHopLe, LoiTrangThaiNhanVien, kết hợp lớp ThongKe để ghi nhận nhật ký lỗi và in báo cáo phân tích trực tiếp ra luồng xuất chuẩn console.   
   
-  Đồng bộ và khôi phục dữ liệu: Cơ chế lưu trữ bền vững qua StorageManager, tự động ghi nhận mọi biến động vào employees.json, departments.json, contracts.json, attendance.json, kpi.json, payroll.json, đồng thời hỗ trợ khôi phục tập dữ liệu mẫu gốc từ kịch bản kiểm thử.   
+  Đồng bộ và khôi phục dữ liệu: Cơ chế lưu trữ bền vững qua StorageManager, tự động ghi nhận mọi biến động vào employees.json, departments.json, contracts.json, attendance.json, kpi.json, payroll.json, đồng thời hỗ trợ khôi phục tập dữ liệu mẫu gốc từ kịch bản kiểm thử.
+
+## 📝 Cấu trúc thư mục
+
+HeThongQuanLiNhanSu/
+├── Include/
+│   ├── ChamCong/        # Khai báo lớp ChamCong
+│   ├── Exception/       # Hệ thống phân cấp LoiNghiepVu
+│   ├── KPI/             # Giao diện IChinhSachThuong và các lớp tính thưởng
+│   ├── Luong/           # Khai báo BangLuong, QuyTrinhTinhLuong
+│   ├── NhanVien/        # Lớp cơ sở NhanVien và 4 lớp dẫn xuất
+│   ├── PhongBan/        # Lớp PhongBan, HopDongLaoDong
+│   └── ThongKe/         # Lớp ThongKe xuất báo cáo console
+├── src/                 # Triển khai mã nguồn C++ tương ứng thư mục Include
+├── web/
+│   ├── data/            # Cơ sở dữ liệu JSON (nhân viên, phòng ban, lương...)
+│   ├── public/          # Giao diện web tĩnh (HTML, CSS, JavaScript)
+│   ├── server/          # C++ HTTP Server, JSON Adapter, Storage Manager
+│   ├── CMakeLists.txt   # File cấu hình build CMake cho Web Server
+│   ├── Makefile         # File build lệnh Make
+│   ├── run.bat          # Script khởi chạy nhanh trên Windows
+│   └── run.sh           # Script khởi chạy nhanh trên Linux/macOS
+├── main_test.cpp        # Kịch bản kiểm thử toàn diện các lớp OOP trên console
+├── run.bat              # Script biên dịch và chạy file test console
+└── README.md
+## 📝 Yêu cầu môi trường
+
+Trình biên dịch C++ hỗ trợ chuẩn C++17 trở lên: GCC/MinGW-w64 (g++ $\ge$ 9.0) hoặc MSVC (Visual Studio 2019 trở lên).   
+
+Công cụ build: CMake ($\ge$ 3.16) hoặc Make.   
+
+Hệ điều hành: Windows 10/11, Ubuntu 20.04/22.04 LTS hoặc macOS.   
+
+Trình duyệt web: Google Chrome, Microsoft Edge, Mozilla Firefox phiên bản mới nhất.
+
+## 📝 Hướng dẫn cài đặt và khởi chạy
+
+### Chế độ 1: Kiểm thử kiểm nghiệm tầng C++ Console
+Mở terminal tại thư mục gốc của dự án và chạy tệp lệnh tự động: run.bat
+
+Hoặc biên dịch thủ công bằng lệnh g++: g++ -std=c++17 -I./Include main_test.cpp src/ChamCong/*.cpp src/Exception/*.cpp src/KPI/*.cpp src/Luong/*.cpp src/NhanVien/*.cpp src/PhongBan/*.cpp src/ThongKe/*.cpp -o main_test.exe
+./main_test.exe
+
+### Chế độ 2: Khởi chạy hệ thống Full-stack Web Engine
+Di chuyển vào thư mục web/: cd web
+Khởi chạy nhanh bằng script có sẵn trên Windows: run.bat
+Hoặc trên Linux / macOS: 
+
+chmod +x run.sh
+./run.sh
+
+Biên dịch thủ công bằng CMake: 
+
+cd web
+mkdir build && cd build
+cmake ..
+cmake --build . --config Release
+
+Sau khi tiến trình máy chủ thông báo Server started at http://localhost:8080, mở trình duyệt web và truy cập vào địa chỉ: http://localhost:8080
+
+
 
 
 
