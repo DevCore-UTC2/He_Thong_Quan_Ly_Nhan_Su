@@ -7,3 +7,13 @@
 ## 📝 Giới thiệu
 
 Một website giúp những người kinh doanh có thể quản lý nhân sự dễ dàng thuận tiện,
+  Hệ thống quản lý nhân sự kết hợp giữa lõi xử lý hướng đối tượng viết bằng C++17 và giao diện web điều khiển thời gian thực. Ứng dụng số hóa quy trình vận hành nhân sự cho doanh nghiệp vừa và nhỏ, bao gồm phân loại nhân sự kế thừa, quản lý phòng ban, hợp đồng, chấm công theo ma trận ngày, tính toán KPI theo mẫu thiết kế Strategy và kết xuất bảng lương tự động.Backend C++ sử dụng thư viện cpp-httplib để dựng máy chủ HTTP REST API, kết hợp thư viện nlohmann/json để phân tích cú pháp và ánh xạ dữ liệu hai chiều giữa bộ nhớ RAM với các tệp JSON lưu trữ trong thư mục web/data/.   
+## 📝 Tính năng chính
+
+Quản lý phân cấp nhân sự: Áp dụng kế thừa từ lớp cơ sở NhanVien thành 4 nhóm đối tượng gồm NhanVienToanThoiGian, NhanVienBanThoiGian, QuanLy và ChuyenGia, phân tách rõ ràng định mức giờ công, hệ số phụ cấp và trách nhiệm.   
+Cơ cấu tổ chức phòng ban: Quản lý danh mục phòng ban qua lớp PhongBan, hỗ trợ chỉ định hoặc bãi nhiệm trưởng phòng, điều chuyển nhân sự và kiểm soát sĩ số thành viên theo thời gian thực.   
+Theo dõi hợp đồng lao động: Quản lý vòng đời hợp đồng bằng lớp HopDongLaoDong, lưu trữ mức lương thỏa thuận cơ bản, ngày ký, ngày hết hạn và kích hoạt cờ cảnh báo tự động khi hợp đồng còn dưới 30 ngày hiệu lực.   
+Chấm công ma trận tháng: Lớp ChamCong ghi nhận dữ liệu đi làm, nghỉ phép hoặc vắng mặt cho từng ngày trong tháng, hỗ trợ khóa chốt công kỳ hạn để ngăn chặn sửa đổi dữ liệu trước khi tính lương.   
+Đánh giá KPI đa hình: Áp dụng Strategy Pattern với giao diện IChinhSachThuong và ba lớp cụ thể ThuongNhanVien, ThuongQuanLy, ThuongChuyenGia, tự động phân loại mức xếp loại (Xuất sắc, Đạt chuẩn, Không thưởng) dựa trên thang điểm 0 đến 100.   
+Quy trình tính lương chuẩn hóa: Lớp QuyTrinhTinhLuong và BangLuong tổng hợp công chuẩn, công thực tế, phụ cấp chức vụ, thưởng KPI, trích trừ bảo hiểm xã hội (10.5%) và thuế thu nhập cá nhân theo biểu lũy tiến để xuất ra bảng lương tổng hợp và tệp CSV.   Bắt ngoại lệ và kiểm định nghiệp vụ: Phân cấp ngoại lệ qua LoiNghiepVu cùng các lớp con LoiChamCong, LoiDuLieuKhongHopLe, LoiTrangThaiNhanVien, kết hợp lớp ThongKe để ghi nhận nhật ký lỗi và in báo cáo phân tích trực tiếp ra luồng xuất chuẩn console.   
+Đồng bộ và khôi phục dữ liệu: Cơ chế lưu trữ bền vững qua StorageManager, tự động ghi nhận mọi biến động vào employees.json, departments.json, contracts.json, attendance.json, kpi.json, payroll.json, đồng thời hỗ trợ khôi phục tập dữ liệu mẫu gốc từ kịch bản kiểm thử.   
