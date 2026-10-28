@@ -29,27 +29,8 @@
 
 ## 📝 Cấu trúc thư mục
 
-HeThongQuanLiNhanSu/
-├── Include/
-│   ├── ChamCong/        # Khai báo lớp ChamCong
-│   ├── Exception/       # Hệ thống phân cấp LoiNghiepVu
-│   ├── KPI/             # Giao diện IChinhSachThuong và các lớp tính thưởng
-│   ├── Luong/           # Khai báo BangLuong, QuyTrinhTinhLuong
-│   ├── NhanVien/        # Lớp cơ sở NhanVien và 4 lớp dẫn xuất
-│   ├── PhongBan/        # Lớp PhongBan, HopDongLaoDong
-│   └── ThongKe/         # Lớp ThongKe xuất báo cáo console
-├── src/                 # Triển khai mã nguồn C++ tương ứng thư mục Include
-├── web/
-│   ├── data/            # Cơ sở dữ liệu JSON (nhân viên, phòng ban, lương...)
-│   ├── public/          # Giao diện web tĩnh (HTML, CSS, JavaScript)
-│   ├── server/          # C++ HTTP Server, JSON Adapter, Storage Manager
-│   ├── CMakeLists.txt   # File cấu hình build CMake cho Web Server
-│   ├── Makefile         # File build lệnh Make
-│   ├── run.bat          # Script khởi chạy nhanh trên Windows
-│   └── run.sh           # Script khởi chạy nhanh trên Linux/macOS
-├── main_test.cpp        # Kịch bản kiểm thử toàn diện các lớp OOP trên console
-├── run.bat              # Script biên dịch và chạy file test console
-└── README.md
+<img width="900" height="582" alt="image" src="https://github.com/user-attachments/assets/8976fe28-5982-425d-9461-a74397d91ae6" />
+
 ## 📝 Yêu cầu môi trường
 
 Trình biên dịch C++ hỗ trợ chuẩn C++17 trở lên: GCC/MinGW-w64 (g++ $\ge$ 9.0) hoặc MSVC (Visual Studio 2019 trở lên).   
