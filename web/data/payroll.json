@@ -1,0 +1,53 @@
+[
+  {
+    "baoHiem": 1332692.3076923075,
+    "hoTen": "Nguyen Van An",
+    "htmlSlip": "<div style='font-family:Segoe UI,Arial; width:460px; border:1px solid #CBD5E1; padding:12px'><div align='center' style='font-size:17px'><b>PHIEU LUONG THANG 10/2026</b></div><br><table width='100%' cellspacing='0'><tr><td>Ma nhan vien:</td><td><b>NV001</b></td><td>Loai:</td><td><b>Nhan Vien Toan Thoi Gian</b></td></tr><tr><td>Ho va ten:</td><td colspan='3'><b>Nguyen Van An</b></td></tr></table><br><table width='100%' cellspacing='0' border='1' style='border-color:#CBD5E1'><tr bgcolor='#1E3A8A'><td style='padding:5px 10px;color:white'><b>KHOAN MUC</b></td><td align='right' style='padding:5px 10px;color:white'><b>SO TIEN (VND)</b></td></tr><tr><td colspan='2' bgcolor='#EEF2FF' style='padding:5px 10px; color:#1E3A8A'><b>A. CAC KHOAN THU NHAP</b></td></tr><tr><td style='padding:5px 10px'>Luong co ban</td><td align='right' style='padding:5px 10px'>12.692.308</td></tr><tr><td style='padding:5px 10px'>Phu cap</td><td align='right' style='padding:5px 10px'>634.615</td></tr><tr><td style='padding:5px 10px'>Thuong KPI</td><td align='right' style='padding:5px 10px'>1.000.000</td></tr><tr><td style='padding:5px 10px'>Khoan bo sung</td><td align='right' style='padding:5px 10px'>2.596.154</td></tr><tr><td style='padding:5px 10px'><b>Tong thu nhap (A)</b></td><td align='right' style='padding:5px 10px'><b>16.923.077</b></td></tr><tr><td colspan='2' bgcolor='#EEF2FF' style='padding:5px 10px; color:#1E3A8A'><b>B. CAC KHOAN KHAU TRU</b></td></tr><tr><td style='padding:5px 10px'>Bao hiem (BHXH, BHYT, BHTN)</td><td align='right' style='padding:5px 10px'>1.332.692</td></tr><tr><td style='padding:5px 10px'>Thue thu nhap ca nhan</td><td align='right' style='padding:5px 10px'>229.519</td></tr><tr><td style='padding:5px 10px'><b>Tong khau tru (B)</b></td><td align='right' style='padding:5px 10px'><b>1.562.212</b></td></tr><tr bgcolor='#DCFCE7'><td style='padding:7px 10px'><b>THUC LINH (A - B)</b></td><td align='right' style='padding:7px 10px;color:#15803D;font-size:15px'><b>15.360.865</b></td></tr></table><p><i>Bang chu: Muoi lam trieu ba tram sau muoi nghin tam tram sau muoi lam dong chan.</i></p><table width='100%'><tr><td align='center'><b>Nguoi lap phieu</b><br><small>(Ky, ghi ro ho ten)</small></td><td align='center'><b>Nguoi nhan luong</b><br><small>(Ky, ghi ro ho ten)</small></td></tr></table></div>",
+    "khoanBoSung": 2596153.846153846,
+    "loaiNhanVien": "Nhan Vien Toan Thoi Gian",
+    "luongCoBan": 12692307.692307692,
+    "luongThucLinh": 15360865.384615382,
+    "maNV": "NV001",
+    "nam": "2026",
+    "phuCap": 634615.3846153846,
+    "thang": "10",
+    "thue": 229519.23076923063,
+    "thuongKPI": 1000000.0,
+    "tongKhauTru": 1562211.538461538,
+    "tongThuNhap": 16923076.92307692
+  },
+  {
+    "baoHiem": 3150000.0,
+    "hoTen": "Pham Hoang Anh",
+    "htmlSlip": "<div style='font-family:Segoe UI,Arial; width:460px; border:1px solid #CBD5E1; padding:12px'><div align='center' style='font-size:17px'><b>PHIEU LUONG THANG 10/2026</b></div><br><table width='100%' cellspacing='0'><tr><td>Ma nhan vien:</td><td><b>CG001</b></td><td>Loai:</td><td><b>Chuyen gia</b></td></tr><tr><td>Ho va ten:</td><td colspan='3'><b>Pham Hoang Anh</b></td></tr></table><br><table width='100%' cellspacing='0' border='1' style='border-color:#CBD5E1'><tr bgcolor='#1E3A8A'><td style='padding:5px 10px;color:white'><b>KHOAN MUC</b></td><td align='right' style='padding:5px 10px;color:white'><b>SO TIEN (VND)</b></td></tr><tr><td colspan='2' bgcolor='#EEF2FF' style='padding:5px 10px; color:#1E3A8A'><b>A. CAC KHOAN THU NHAP</b></td></tr><tr><td style='padding:5px 10px'>Luong co ban</td><td align='right' style='padding:5px 10px'>30.000.000</td></tr><tr><td style='padding:5px 10px'>Phu cap</td><td align='right' style='padding:5px 10px'>6.600.000</td></tr><tr><td style='padding:5px 10px'>Thuong KPI</td><td align='right' style='padding:5px 10px'>5.000.000</td></tr><tr><td style='padding:5px 10px'>Khoan bo sung</td><td align='right' style='padding:5px 10px'>3.000.000</td></tr><tr><td style='padding:5px 10px'><b>Tong thu nhap (A)</b></td><td align='right' style='padding:5px 10px'><b>44.600.000</b></td></tr><tr><td colspan='2' bgcolor='#EEF2FF' style='padding:5px 10px; color:#1E3A8A'><b>B. CAC KHOAN KHAU TRU</b></td></tr><tr><td style='padding:5px 10px'>Bao hiem (BHXH, BHYT, BHTN)</td><td align='right' style='padding:5px 10px'>3.150.000</td></tr><tr><td style='padding:5px 10px'>Thue thu nhap ca nhan</td><td align='right' style='padding:5px 10px'>4.440.000</td></tr><tr><td style='padding:5px 10px'><b>Tong khau tru (B)</b></td><td align='right' style='padding:5px 10px'><b>7.590.000</b></td></tr><tr bgcolor='#DCFCE7'><td style='padding:7px 10px'><b>THUC LINH (A - B)</b></td><td align='right' style='padding:7px 10px;color:#15803D;font-size:15px'><b>37.010.000</b></td></tr></table><p><i>Bang chu: Ba muoi bay trieu khong tram muoi nghin dong chan.</i></p><table width='100%'><tr><td align='center'><b>Nguoi lap phieu</b><br><small>(Ky, ghi ro ho ten)</small></td><td align='center'><b>Nguoi nhan luong</b><br><small>(Ky, ghi ro ho ten)</small></td></tr></table></div>",
+    "khoanBoSung": 3000000.0,
+    "loaiNhanVien": "Chuyen gia",
+    "luongCoBan": 30000000.0,
+    "luongThucLinh": 37010000.0,
+    "maNV": "CG001",
+    "nam": "2026",
+    "phuCap": 6600000.0,
+    "thang": "10",
+    "thue": 4440000.0,
+    "thuongKPI": 5000000.0,
+    "tongKhauTru": 7590000.0,
+    "tongThuNhap": 44600000.0
+  },
+  {
+    "baoHiem": 2625000.0,
+    "hoTen": "Le Minh Quan",
+    "htmlSlip": "<div style='font-family:Segoe UI,Arial; width:460px; border:1px solid #CBD5E1; padding:12px'><div align='center' style='font-size:17px'><b>PHIEU LUONG THANG 10/2026</b></div><br><table width='100%' cellspacing='0'><tr><td>Ma nhan vien:</td><td><b>QL001</b></td><td>Loai:</td><td><b>Quan ly</b></td></tr><tr><td>Ho va ten:</td><td colspan='3'><b>Le Minh Quan</b></td></tr></table><br><table width='100%' cellspacing='0' border='1' style='border-color:#CBD5E1'><tr bgcolor='#1E3A8A'><td style='padding:5px 10px;color:white'><b>KHOAN MUC</b></td><td align='right' style='padding:5px 10px;color:white'><b>SO TIEN (VND)</b></td></tr><tr><td colspan='2' bgcolor='#EEF2FF' style='padding:5px 10px; color:#1E3A8A'><b>A. CAC KHOAN THU NHAP</b></td></tr><tr><td style='padding:5px 10px'>Luong co ban</td><td align='right' style='padding:5px 10px'>25.000.000</td></tr><tr><td style='padding:5px 10px'>Phu cap</td><td align='right' style='padding:5px 10px'>5.000.000</td></tr><tr><td style='padding:5px 10px'>Thuong KPI</td><td align='right' style='padding:5px 10px'>10.000.000</td></tr><tr><td style='padding:5px 10px'>Khoan bo sung</td><td align='right' style='padding:5px 10px'>0</td></tr><tr><td style='padding:5px 10px'><b>Tong thu nhap (A)</b></td><td align='right' style='padding:5px 10px'><b>40.000.000</b></td></tr><tr><td colspan='2' bgcolor='#EEF2FF' style='padding:5px 10px; color:#1E3A8A'><b>B. CAC KHOAN KHAU TRU</b></td></tr><tr><td style='padding:5px 10px'>Bao hiem (BHXH, BHYT, BHTN)</td><td align='right' style='padding:5px 10px'>2.625.000</td></tr><tr><td style='padding:5px 10px'>Thue thu nhap ca nhan</td><td align='right' style='padding:5px 10px'>3.625.000</td></tr><tr><td style='padding:5px 10px'><b>Tong khau tru (B)</b></td><td align='right' style='padding:5px 10px'><b>6.250.000</b></td></tr><tr bgcolor='#DCFCE7'><td style='padding:7px 10px'><b>THUC LINH (A - B)</b></td><td align='right' style='padding:7px 10px;color:#15803D;font-size:15px'><b>33.750.000</b></td></tr></table><p><i>Bang chu: Ba muoi ba trieu bay tram nam muoi nghin dong chan.</i></p><table width='100%'><tr><td align='center'><b>Nguoi lap phieu</b><br><small>(Ky, ghi ro ho ten)</small></td><td align='center'><b>Nguoi nhan luong</b><br><small>(Ky, ghi ro ho ten)</small></td></tr></table></div>",
+    "khoanBoSung": 0.0,
+    "loaiNhanVien": "Quan ly",
+    "luongCoBan": 25000000.0,
+    "luongThucLinh": 33750000.0,
+    "maNV": "QL001",
+    "nam": "2026",
+    "phuCap": 5000000.0,
+    "thang": "10",
+    "thue": 3625000.0,
+    "thuongKPI": 10000000.0,
+    "tongKhauTru": 6250000.0,
+    "tongThuNhap": 40000000.0
+  }
+]

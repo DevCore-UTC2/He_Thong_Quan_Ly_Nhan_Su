@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hệ thống Quản lý Nhân sự - C++ OOP SaaS Engine</title>
+  
+  <!-- Google Fonts: Be Vietnam Pro -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=1.3">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="#dashboard" class="logo-area">
+          <div class="logo-icon">
+            <i data-lucide="cpu"></i>
+          </div>
+          <div class="logo-text">
+            <span class="logo-title">HRMS OOP</span>
+            <span class="logo-subtitle">C++17 Engine</span>
+          </div>
+        </a>
+      </div>
+
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a class="nav-link active" data-tab="dashboard">
+            <i data-lucide="layout-dashboard"></i>
+            <span class="nav-text">Tổng quan</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-tab="employees">
+            <i data-lucide="users"></i>
+            <span class="nav-text">Nhân viên</span>
+            <span class="nav-badge" id="badge-emp-count">0</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-tab="departments">
+            <i data-lucide="building-2"></i>
+            <span class="nav-text">Phòng ban</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-tab="contracts">
+            <i data-lucide="file-text"></i>
+            <span class="nav-text">Hợp đồng</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-tab="attendance">
+            <i data-lucide="calendar-check-2"></i>
+            <span class="nav-text">Chấm công</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-tab="kpi">
+            <i data-lucide="award"></i>
+            <span class="nav-text">KPI & Thưởng</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-tab="payroll">
+            <i data-lucide="banknote"></i>
+            <span class="nav-text">Bảng lương</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-tab="reports">
+            <i data-lucide="bar-chart-3"></i>
+            <span class="nav-text">Thống kê C++</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-tab="data-mgmt">
+            <i data-lucide="database"></i>
+            <span class="nav-text">Quản lý Dữ liệu</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="cpp-core-tag">
+          <div class="pulse-dot"></div>
+          <span>OOP Engine Kết nối Trực tiếp</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN WRAPPER -->
+    <div class="main-wrapper" id="main-wrapper">
+      
+      <!-- TOPBAR -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="btn-icon" id="toggle-sidebar-btn" title="Thu gọn / Mở rộng Sidebar">
+            <i data-lucide="menu"></i>
+          </button>
+          
+          <div class="search-bar">
+            <i data-lucide="search" style="width: 16px; color: var(--text-muted)"></i>
+            <input type="text" id="global-search-input" placeholder="Tìm kiếm nhanh nhân viên, mã số, email...">
+            <span class="kbd-shortcut">/</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="system-status">
+            <i data-lucide="clock" style="width: 14px; color: var(--primary)"></i>
+            <span id="realtime-clock">Đang đồng bộ...</span>
+          </div>
+
+          <button class="theme-toggle-btn" id="theme-toggle-btn" title="Chuyển chế độ Sáng / Tối" aria-label="Toggle Theme">
+            <i data-lucide="moon" id="theme-icon"></i>
+          </button>
+
+          <button class="btn btn-secondary btn-sm" id="btn-quick-reset" title="Khôi phục dữ liệu mẫu gốc">
+            <i data-lucide="rotate-ccw" style="width: 14px"></i>
+            <span>Dữ liệu mẫu</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- CONTENT BODY -->
+      <main class="content-body">
+        
+        <!-- ==========================================
+             1. DASHBOARD
+             ========================================== -->
+        <section class="page-section active" id="sec-dashboard">
+          <div class="section-header">
+            <div class="section-title">
+              <h1>Bảng điều khiển Tổng quan</h1>
+              <p>Hệ thống giám sát nhân sự thời gian thực hỗ trợ bởi thuật toán C++</p>
+            </div>
+            <div class="section-actions">
+              <button class="btn btn-primary" onclick="App.openAddEmployeeModal()">
+                <i data-lucide="user-plus"></i>
+                <span>Thêm nhân viên</span>
+              </button>
+              <button class="btn btn-secondary" onclick="App.recalculateAllPayroll()">
+                <i data-lucide="calculator"></i>
+                <span>Tính lương kỳ này</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- KPI Cards -->
+          <div class="grid-stats">
+            <div class="card stat-card">
+              <div class="stat-info">
+                <span class="stat-label">Tổng nhân viên</span>
+                <span class="stat-value" id="kpi-total-emp">0</span>
+                <span class="stat-sub">Đang hoạt động trong tổ chức</span>
+              </div>
+              <div class="stat-icon icon-primary">
+                <i data-lucide="users"></i>
+              </div>
+            </div>
+
+            <div class="card stat-card">
+              <div class="stat-info">
+                <span class="stat-label">Tổng quỹ lương (Tháng)</span>
+                <span class="stat-value" id="kpi-total-salary">0 ₫</span>
+                <span class="stat-sub">Thực lĩnh kỳ tính lương hiện tại</span>
+              </div>
+              <div class="stat-icon icon-success">
+                <i data-lucide="banknote"></i>
+              </div>
+            </div>
+
+            <div class="card stat-card">
+              <div class="stat-info">
+                <span class="stat-label">Điểm KPI trung bình</span>
+                <span class="stat-value" id="kpi-avg-score">0.0</span>
+                <span class="stat-sub">Thang đánh giá hiệu suất</span>
+              </div>
+              <div class="stat-icon icon-warning">
+                <i data-lucide="award"></i>
+              </div>
+            </div>
+
+            <div class="card stat-card">
+              <div class="stat-info">
+                <span class="stat-label">Số phòng ban</span>
+                <span class="stat-value" id="kpi-total-depts">0</span>
+                <span class="stat-sub">Khối chuyên môn</span>
+              </div>
+              <div class="stat-icon icon-info">
+                <i data-lucide="building-2"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Row -->
+          <div class="grid-charts">
+            <div class="card">
+              <div class="chart-header">
+                <h3 class="chart-title">Phân bổ theo Loại nhân sự</h3>
+                <span class="badge badge-primary">Đa hình OOP</span>
+              </div>
+              <div style="height: 260px; position: relative;">
+                <canvas id="chart-employee-type"></canvas>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="chart-header">
+                <h3 class="chart-title">Nhân sự theo Phòng ban</h3>
+                <span class="badge badge-secondary">Tập hợp (Aggregation)</span>
+              </div>
+              <div style="height: 260px; position: relative;">
+                <canvas id="chart-department-dist"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Employees and Alerts -->
+          <div class="card">
+            <div class="chart-header">
+              <h3 class="chart-title">Cảnh báo & Nhân sự nổi bật</h3>
+              <a href="#employees" class="btn btn-secondary btn-sm" onclick="App.switchTab('employees')">Xem tất cả</a>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Mã NV</th>
+                    <th>Họ và tên</th>
+                    <th>Loại nhân sự</th>
+                    <th>Phòng ban</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="dashboard-recent-employees">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             2. QUẢN LÝ NHÂN VIÊN
+             ========================================== -->
+        <section class="page-section" id="sec-employees">
+          <div class="section-header">
+            <div class="section-title">
+              <h1>Quản lý Danh sách Nhân viên</h1>
+              <p>Mô hình kế thừa đa hình: Toàn thời gian, Bán thời gian, Quản lý, Chuyên gia</p>
+            </div>
+            <div class="section-actions">
+              <button class="btn btn-secondary" onclick="App.exportCSV('employees')">
+                <i data-lucide="download"></i>
+                <span>Xuất CSV</span>
+              </button>
+              <button class="btn btn-primary" onclick="App.openAddEmployeeModal()">
+                <i data-lucide="user-plus"></i>
+                <span>Thêm nhân viên mới</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="card table-card">
+            <div class="table-toolbar">
+              <div class="table-filters">
+                <input type="text" id="filter-emp-search" class="form-input" placeholder="Tìm theo tên hoặc mã NV..." style="width: 240px;">
+                
+                <select id="filter-emp-type" class="filter-select">
+                  <option value="">-- Tất cả loại nhân sự --</option>
+                  <option value="TOAN_THOI_GIAN">Toàn thời gian</option>
+                  <option value="BAN_THOI_GIAN">Bán thời gian</option>
+                  <option value="QUAN_LY">Quản lý</option>
+                  <option value="CHUYEN_GIA">Chuyên gia</option>
+                </select>
+
+                <select id="filter-emp-dept" class="filter-select">
+                  <option value="">-- Tất cả phòng ban --</option>
+                </select>
+
+                <select id="filter-emp-status" class="filter-select">
+                  <option value="">-- Tất cả trạng thái --</option>
+                  <option value="Dang lam">Đang làm</option>
+                  <option value="Da nghi viec">Đã nghỉ việc</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Mã NV</th>
+                    <th>Họ và tên</th>
+                    <th>Phòng ban</th>
+                    <th>Loại nhân viên</th>
+                    <th>Số điện thoại / Email</th>
+                    <th>Thông tin đặc thù</th>
+                    <th>Trạng thái</th>
+                    <th style="text-align: right;">Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="employees-table-body">
+                  <!-- Injected via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             3. PHÒNG BAN
+             ========================================== -->
+        <section class="page-section" id="sec-departments">
+          <div class="section-header">
+            <div class="section-title">
+              <h1>Cơ cấu Tổ chức & Phòng ban</h1>
+              <p>Quản lý tập hợp các nhân sự, chỉ định và luân chuyển phòng ban</p>
+            </div>
+            <div class="section-actions">
+              <button class="btn btn-primary" onclick="App.openAddDepartmentModal()">
+                <i data-lucide="plus"></i>
+                <span>Tạo phòng ban mới</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="grid-stats" id="departments-grid">
+            <!-- Injected via JS -->
+          </div>
+        </section>
+
+        <!-- ==========================================
+             4. HỢP ĐỒNG LAO ĐỘNG
+             ========================================== -->
+        <section class="page-section" id="sec-contracts">
+          <div class="section-header">
+            <div class="section-title">
+              <h1>Hợp đồng Lao động</h1>
+              <p>Quản lý hồ sơ ký kết, mức lương thỏa thuận và theo dõi thời hạn</p>
+            </div>
+            <div class="section-actions">
+              <button class="btn btn-primary" onclick="App.openAddContractModal()">
+                <i data-lucide="file-plus"></i>
+                <span>Tạo hợp đồng mới</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="card table-card">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Mã HĐ</th>
+                    <th>Nhân sự thụ hưởng</th>
+                    <th>Loại hợp đồng</th>
+                    <th>Ngày ký kết</th>
+                    <th>Ngày hết hạn</th>
+                    <th>Lương thỏa thuận</th>
+                    <th>Tình trạng</th>
+                    <th style="text-align: right;">Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="contracts-table-body">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             5. CHẤM CÔNG
+             ========================================== -->
+        <section class="page-section" id="sec-attendance">
+          <div class="section-header">
+            <div class="section-title">
+              <h1>Bảng Chấm công</h1>
+              <p>Ghi nhận ngày làm việc, ngày nghỉ và chốt kỳ công để tính lương</p>
+            </div>
+            <div class="section-actions">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <label class="form-label">Kỳ:</label>
+                <select id="attendance-month" class="form-select" style="width: 100px;">
+                  <option value="1">Tháng 1</option>
+                  <option value="2">Tháng 2</option>
+                  <option value="3">Tháng 3</option>
+                  <option value="4">Tháng 4</option>
+                  <option value="5">Tháng 5</option>
+                  <option value="6">Tháng 6</option>
+                  <option value="7">Tháng 7</option>
+                  <option value="8">Tháng 8</option>
+                  <option value="9">Tháng 9</option>
+                  <option value="10" selected>Tháng 10</option>
+                  <option value="11">Tháng 11</option>
+                  <option value="12">Tháng 12</option>
+                </select>
+                <select id="attendance-year" class="form-select" style="width: 100px;">
+                  <option value="2025">2025</option>
+                  <option value="2026" selected>2026</option>
+                  <option value="2027">2027</option>
+                </select>
+                <button class="btn btn-secondary btn-sm" onclick="App.loadAttendance()">Xem</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card table-card">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Mã NV</th>
+                    <th>Họ và tên</th>
+                    <th>Kỳ công</th>
+                    <th>Số ngày công</th>
+                    <th>Số ngày nghỉ</th>
+                    <th>Trạng thái</th>
+                    <th style="text-align: right;">Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="attendance-table-body">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             6. KPI & THƯỞNG
+             ========================================== -->
+        <section class="page-section" id="sec-kpi">
+          <div class="section-header">
+            <div class="section-title">
+              <h1>Đánh giá KPI & Thưởng</h1>
+              <p>Chính sách thưởng đa hình qua Strategy Pattern: ThuongNhanVien, ThuongQuanLy, ThuongChuyenGia</p>
+            </div>
+            <div class="section-actions">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <label class="form-label">Kỳ:</label>
+                <select id="kpi-month" class="form-select" style="width: 100px;">
+                  <option value="10" selected>Tháng 10</option>
+                  <option value="11">Tháng 11</option>
+                  <option value="12">Tháng 12</option>
+                </select>
+                <select id="kpi-year" class="form-select" style="width: 100px;">
+                  <option value="2026" selected>2026</option>
+                </select>
+                <button class="btn btn-secondary btn-sm" onclick="App.loadKPI()">Xem</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card table-card">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Mã NV</th>
+                    <th>Họ và tên</th>
+                    <th>Loại nhân sự</th>
+                    <th>Kỳ đánh giá</th>
+                    <th>Điểm KPI (0-100)</th>
+                    <th>Tiền thưởng (VND)</th>
+                    <th>Đánh giá</th>
+                    <th style="text-align: right;">Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="kpi-table-body">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             7. BẢNG LƯƠNG
+             ========================================== -->
+        <section class="page-section" id="sec-payroll">
+          <div class="section-header">
+            <div class="section-title">
+              <h1>Bảng Lương Doanh Nghiệp</h1>
+              <p>Xử lý bởi QuyTrinhTinhLuong & LuongFactory (Toàn thời gian, Bán thời gian, Quản lý, Chuyên gia)</p>
+            </div>
+            <div class="section-actions">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <label class="form-label">Kỳ:</label>
+                <select id="payroll-month" class="form-select" style="width: 100px;">
+                  <option value="10" selected>Tháng 10</option>
+                  <option value="11">Tháng 11</option>
+                  <option value="12">Tháng 12</option>
+                </select>
+                <select id="payroll-year" class="form-select" style="width: 100px;">
+                  <option value="2026" selected>2026</option>
+                </select>
+              </div>
+              <button class="btn btn-secondary" onclick="App.exportCSV('payroll')">
+                <i data-lucide="file-spreadsheet"></i>
+                <span>Xuất CSV Lương</span>
+              </button>
+              <button class="btn btn-primary" onclick="App.recalculateAllPayroll()">
+                <i data-lucide="calculator"></i>
+                <span>Tính lương toàn công ty</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="card table-card">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Mã NV</th>
+                    <th>Họ và tên</th>
+                    <th>Loại NV</th>
+                    <th>Lương cơ bản</th>
+                    <th>Phụ cấp</th>
+                    <th>Thưởng KPI</th>
+                    <th>Khoản bổ sung</th>
+                    <th>Tổng thu nhập</th>
+                    <th>Bảo hiểm</th>
+                    <th>Thuế TNCN</th>
+                    <th>Thực lĩnh</th>
+                    <th style="text-align: right;">Phiếu lương</th>
+                  </tr>
+                </thead>
+                <tbody id="payroll-table-body">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             8. THỐNG KÊ & BÁO CÁO C++
+             ========================================== -->
+        <section class="page-section" id="sec-reports">
+          <div class="section-header">
+            <div class="section-title">
+              <h1>Báo cáo Thống kê & Ngoại lệ Nghiệp vụ</h1>
+              <p>Gọi trực tiếp vào class ThongKe và hệ ngoại lệ LoiNghiepVu của C++</p>
+            </div>
+            <div class="section-actions">
+              <button class="btn btn-secondary" onclick="App.loadRawReport()">
+                <i data-lucide="refresh-cw"></i>
+                <span>Tải lại báo cáo C++</span>
+              </button>
+              <button class="btn btn-primary" onclick="App.copyRawReport()">
+                <i data-lucide="copy"></i>
+                <span>Sao chép báo cáo</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Exception Monitor -->
+          <div class="grid-stats" style="margin-bottom: 24px;">
+            <div class="card stat-card">
+              <div class="stat-info">
+                <span class="stat-label">Tổng ngoại lệ C++ đã bắt</span>
+                <span class="stat-value" id="stats-total-err">0</span>
+                <span class="stat-sub">Được ghi nhận bởi ThongKe::ghiNhanLoi</span>
+              </div>
+              <div class="stat-icon icon-danger">
+                <i data-lucide="alert-triangle"></i>
+              </div>
+            </div>
+
+            <div class="card stat-card">
+              <div class="stat-info">
+                <span class="stat-label">Lỗi Chấm công</span>
+                <span class="stat-value" id="stats-err-chamcong">0</span>
+                <span class="stat-sub">LoiChamCong (Chưa chốt, sai kỳ,...)</span>
+              </div>
+              <div class="stat-icon icon-warning">
+                <i data-lucide="calendar-x-2"></i>
+              </div>
+            </div>
+
+            <div class="card stat-card">
+              <div class="stat-info">
+                <span class="stat-label">Lỗi Dữ liệu không hợp lệ</span>
+                <span class="stat-value" id="stats-err-dulieu">0</span>
+                <span class="stat-sub">LoiDuLieuKhongHopLe</span>
+              </div>
+              <div class="stat-icon icon-info">
+                <i data-lucide="file-question"></i>
+              </div>
+            </div>
+
+            <div class="card stat-card">
+              <div class="stat-info">
+                <span class="stat-label">Lỗi Trạng thái nhân viên</span>
+                <span class="stat-value" id="stats-err-trangthai">0</span>
+                <span class="stat-sub">LoiTrangThaiNhanVien (Nghỉ việc,...)</span>
+              </div>
+              <div class="stat-icon icon-danger">
+                <i data-lucide="user-x"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- C++ Raw Console Output -->
+          <div class="card">
+            <div class="chart-header">
+              <h3 class="chart-title">Đầu ra Báo cáo Tổng hợp Nguyên bản (ThongKe::baoCaoTongHop)</h3>
+              <span class="badge badge-secondary">Console Stream Capture</span>
+            </div>
+            <pre class="console-box" id="raw-console-report">Đang tải báo cáo C++...</pre>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             9. QUẢN LÝ DỮ LIỆU
+             ========================================== -->
+        <section class="page-section" id="sec-data-mgmt">
+          <div class="section-header">
+            <div class="section-title">
+              <h1>Quản lý & Lưu trữ Dữ liệu Bền vững</h1>
+              <p>Hệ thống tự động đồng bộ ra thư mục web/data/, không bị mất khi tắt máy chủ</p>
+            </div>
+          </div>
+
+          <div class="grid-stats">
+            <div class="card">
+              <div class="stat-icon icon-primary" style="margin-bottom: 16px;">
+                <i data-lucide="rotate-ccw"></i>
+              </div>
+              <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Khôi phục Dữ liệu Mẫu gốc</h3>
+              <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 18px;">
+                Nạp lại toàn bộ dữ liệu mẫu theo đúng kịch bản của file <code>main_test.cpp</code> (NV001, NV002, QL001, CG001).
+              </p>
+              <button class="btn btn-secondary" onclick="App.resetSampleData()">
+                <i data-lucide="refresh-cw"></i>
+                <span>Khôi phục dữ liệu mẫu</span>
+              </button>
+            </div>
+
+            <div class="card">
+              <div class="stat-icon icon-success" style="margin-bottom: 16px;">
+                <i data-lucide="download"></i>
+              </div>
+              <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Sao lưu Dữ liệu JSON</h3>
+              <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 18px;">
+                Tải về toàn bộ cơ sở dữ liệu hệ thống dưới dạng tệp tin JSON an toàn.
+              </p>
+              <a href="/api/data/export-json" class="btn btn-secondary" download>
+                <i data-lucide="hard-drive-download"></i>
+                <span>Tải tệp Sao lưu</span>
+              </a>
+            </div>
+
+            <div class="card">
+              <div class="stat-icon icon-info" style="margin-bottom: 16px;">
+                <i data-lucide="upload"></i>
+              </div>
+              <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Phục hồi từ File JSON</h3>
+              <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 18px;">
+                Nhập file JSON đã sao lưu từ trước để phục hồi dữ liệu vào C++ backend.
+              </p>
+              <input type="file" id="import-json-file" accept=".json" style="display: none;" onchange="App.handleImportJSON(event)">
+              <button class="btn btn-secondary" onclick="document.getElementById('import-json-file').click()">
+                <i data-lucide="hard-drive-upload"></i>
+                <span>Chọn File để Nhập</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODALS
+       ========================================== -->
+  
+  <!-- EMPLOYEE MODAL (ADD / EDIT) -->
+  <div class="modal-overlay" id="modal-employee">
+    <div class="modal-content modal-lg">
+      <div class="modal-header">
+        <h3 id="modal-employee-title">Thêm Nhân viên Mới</h3>
+        <button class="btn-icon" onclick="App.closeModal('modal-employee')">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <form id="form-employee" onsubmit="App.saveEmployee(event)">
+        <div class="modal-body">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Mã nhân viên <span style="color:var(--danger)">*</span></label>
+              <input type="text" id="emp-maNV" class="form-input" placeholder="VD: NV003, QL002..." oninput="App.validateField('emp-maNV')" required>
+              <div class="field-error" id="err-emp-maNV"></div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Họ và tên <span style="color:var(--danger)">*</span></label>
+              <input type="text" id="emp-hoTen" class="form-input" placeholder="VD: Nguyễn Văn Nam" oninput="App.validateField('emp-hoTen')" required>
+              <div class="field-error" id="err-emp-hoTen"></div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Ngày sinh (DD/MM/YYYY) <span style="color:var(--danger)">*</span></label>
+              <input type="text" id="emp-ngaySinh" class="form-input" placeholder="VD: 15/08/1995" oninput="App.validateField('emp-ngaySinh')" required>
+              <div class="field-error" id="err-emp-ngaySinh">
+                <span style="color:var(--text-muted)">Độ tuổi lao động hợp pháp: từ 18 đến 65 tuổi</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Số điện thoại <span style="color:var(--danger)">*</span></label>
+              <input type="text" id="emp-soDienThoai" class="form-input" placeholder="VD: 0912345678" oninput="App.validateField('emp-soDienThoai')" required>
+              <div class="field-error" id="err-emp-soDienThoai"></div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Email <span style="color:var(--danger)">*</span></label>
+              <input type="email" id="emp-email" class="form-input" placeholder="VD: nam@cty.vn" oninput="App.validateField('emp-email')" required>
+              <div class="field-error" id="err-emp-email"></div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Trạng thái công tác <span style="color:var(--danger)">*</span></label>
+              <select id="emp-trangThai" class="form-select">
+                <option value="Dang lam">Đang làm</option>
+                <option value="Da nghi viec">Đã nghỉ việc</option>
+              </select>
+              <div class="field-error" id="err-emp-trangThai"></div>
+            </div>
+
+            <div class="form-group col-span-2">
+              <label class="form-label">Phòng ban trực thuộc</label>
+              <select id="emp-maPhongBan" class="form-select">
+                <option value="">-- Chưa gán phòng ban --</option>
+              </select>
+            </div>
+
+            <!-- CHỌN HÌNH THỨC / VỊ TRÍ NHÂN SỰ -->
+            <div class="form-group col-span-2">
+              <label class="form-label">Hình thức làm việc / Vị trí nhân sự <span style="color:var(--danger)">*</span></label>
+              <input type="hidden" id="emp-loaiId" value="TOAN_THOI_GIAN">
+              <div class="poly-card-grid" id="poly-card-container">
+                <div class="poly-card active" data-type="TOAN_THOI_GIAN" onclick="App.selectEmployeeType('TOAN_THOI_GIAN')">
+                  <div class="poly-card-icon"><i data-lucide="briefcase"></i></div>
+                  <div class="poly-card-body">
+                    <div class="poly-card-title">Toàn thời gian</div>
+                    <div class="poly-card-class">Chính thức (Full-time)</div>
+                  </div>
+                  <div class="poly-card-check"><i data-lucide="check" style="width: 12px; height: 12px;"></i></div>
+                </div>
+
+                <div class="poly-card" data-type="BAN_THOI_GIAN" onclick="App.selectEmployeeType('BAN_THOI_GIAN')">
+                  <div class="poly-card-icon"><i data-lucide="clock"></i></div>
+                  <div class="poly-card-body">
+                    <div class="poly-card-title">Bán thời gian</div>
+                    <div class="poly-card-class">Bán thời gian (Part-time)</div>
+                  </div>
+                  <div class="poly-card-check"><i data-lucide="check" style="width: 12px; height: 12px;"></i></div>
+                </div>
+
+                <div class="poly-card" data-type="QUAN_LY" onclick="App.selectEmployeeType('QUAN_LY')">
+                  <div class="poly-card-icon"><i data-lucide="shield-check"></i></div>
+                  <div class="poly-card-body">
+                    <div class="poly-card-title">Quản lý</div>
+                    <div class="poly-card-class">Cán bộ điều hành & Trưởng đơn vị</div>
+                  </div>
+                  <div class="poly-card-check"><i data-lucide="check" style="width: 12px; height: 12px;"></i></div>
+                </div>
+
+                <div class="poly-card" data-type="CHUYEN_GIA" onclick="App.selectEmployeeType('CHUYEN_GIA')">
+                  <div class="poly-card-icon"><i data-lucide="award"></i></div>
+                  <div class="poly-card-body">
+                    <div class="poly-card-title">Chuyên gia</div>
+                    <div class="poly-card-class">Chuyên gia kỹ thuật & Cố vấn</div>
+                  </div>
+                  <div class="poly-card-check"><i data-lucide="check" style="width: 12px; height: 12px;"></i></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- KHUNG THUỘC TÍNH CHI TIẾT THEO VỊ TRÍ -->
+            <!-- 1. Toàn thời gian -->
+            <div id="fields-toanthoigian" class="col-span-2 poly-fields-box">
+              <div class="poly-fields-header">
+                <i data-lucide="briefcase" style="width: 16px; height: 16px;"></i>
+                <span>Chế độ công tác & Ca làm việc (Toàn thời gian)</span>
+              </div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Số ngày công chuẩn (ngày/tháng)</label>
+                  <input type="number" id="emp-soNgayCong" class="form-input" value="22" min="0" max="31" oninput="App.validateField('emp-soNgayCong')">
+                  <div class="field-error" id="err-emp-soNgayCong"></div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Số giờ làm việc chuẩn (giờ/tháng)</label>
+                  <input type="number" id="emp-soGioLam" class="form-input" value="176" min="0" oninput="App.validateField('emp-soGioLam')">
+                  <div class="field-error" id="err-emp-soGioLam"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Ca làm việc</label>
+                <input type="text" id="emp-caLamViec" class="form-input" value="Ca sáng (08:00 - 17:00)" placeholder="VD: Ca sáng (08:00 - 17:00)">
+                <div class="quick-chips">
+                  <button type="button" class="chip-btn" onclick="App.setShiftPreset('Ca sáng (08:00 - 17:00)')">Ca sáng (08h - 17h)</button>
+                  <button type="button" class="chip-btn" onclick="App.setShiftPreset('Ca chiều (13:00 - 21:00)')">Ca chiều (13h - 21h)</button>
+                  <button type="button" class="chip-btn" onclick="App.setShiftPreset('Ca tối (21:00 - 06:00)')">Ca tối (21h - 06h)</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Bán thời gian -->
+            <div id="fields-banthoigian" class="col-span-2 poly-fields-box" style="display: none;">
+              <div class="poly-fields-header">
+                <i data-lucide="clock" style="width: 16px; height: 16px;"></i>
+                <span>Chế độ thù lao & Thời gian làm việc (Bán thời gian)</span>
+              </div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Số giờ làm việc tích lũy (giờ)</label>
+                  <input type="number" id="emp-bt-soGioLam" class="form-input" value="80" min="0" oninput="App.validateField('emp-bt-soGioLam')">
+                  <div class="field-error" id="err-emp-bt-soGioLam"></div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Đơn giá thù lao theo giờ (VNĐ/giờ)</label>
+                  <input type="number" id="emp-bt-luongTheoGio" class="form-input" value="50000" min="0" step="5000" oninput="App.validateField('emp-bt-luongTheoGio')">
+                  <div class="field-error" id="err-emp-bt-luongTheoGio"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Quản lý -->
+            <div id="fields-quanly" class="col-span-2 poly-fields-box" style="display: none;">
+              <div class="poly-fields-header">
+                <i data-lucide="shield-check" style="width: 16px; height: 16px;"></i>
+                <span>Thông tin chức vụ & Cấp bậc quản lý</span>
+              </div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Chức danh / Chức vụ quản lý</label>
+                  <input type="text" id="emp-ql-chucVu" class="form-input" placeholder="VD: Trưởng phòng Kỹ thuật, Phó Giám đốc">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Phân cấp quản lý</label>
+                  <input type="text" id="emp-ql-capQuanLy" class="form-input" placeholder="VD: Quản lý cấp trung, Quản lý cấp cao">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phạm vi & Mảng nghiệp vụ phụ trách</label>
+                <input type="text" id="emp-ql-thongTinDacThu" class="form-input" placeholder="VD: Phụ trách quản lý kỹ thuật và phát triển sản phẩm">
+              </div>
+            </div>
+
+            <!-- 4. Chuyên gia -->
+            <div id="fields-chuyengia" class="col-span-2 poly-fields-box" style="display: none;">
+              <div class="poly-fields-header">
+                <i data-lucide="award" style="width: 16px; height: 16px;"></i>
+                <span>Thông tin chuyên môn & Thâm niên chuyên gia</span>
+              </div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Lĩnh vực chuyên môn sâu</label>
+                  <input type="text" id="emp-cg-chuyenMon" class="form-input" placeholder="VD: Kiến trúc hệ thống, Trí tuệ nhân tạo, DevOps">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Số năm kinh nghiệm chuyên sâu (năm)</label>
+                  <input type="number" id="emp-cg-soNamKinhNghiem" class="form-input" value="5" min="0">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="App.closeModal('modal-employee')">
+            <i data-lucide="x" style="width: 15px; height: 15px;"></i>
+            <span>Hủy bỏ</span>
+          </button>
+          <button type="submit" class="btn btn-primary" id="btn-save-employee">
+            <i data-lucide="check" style="width: 15px; height: 15px;"></i>
+            <span>Xác nhận lưu nhân sự</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- DEPARTMENT MODAL -->
+  <div class="modal-overlay" id="modal-department">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modal-dept-title">Tạo Phòng Ban Mới</h3>
+        <button class="btn-icon" onclick="App.closeModal('modal-department')"><i data-lucide="x"></i></button>
+      </div>
+      <form id="form-department" onsubmit="App.saveDepartment(event)">
+        <div class="modal-body">
+          <div class="form-grid single-col">
+            <div class="form-group">
+              <label class="form-label">Mã phòng ban <span style="color:var(--danger)">*</span></label>
+              <input type="text" id="dept-maPB" class="form-input" placeholder="VD: PB003" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tên phòng ban <span style="color:var(--danger)">*</span></label>
+              <input type="text" id="dept-tenPB" class="form-input" placeholder="VD: Phong Nghien Cuu & Phat Trien" required>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="App.closeModal('modal-department')">Hủy</button>
+          <button type="submit" class="btn btn-primary">Lưu phòng ban</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- DEPARTMENT MEMBERS MODAL -->
+  <div class="modal-overlay" id="modal-dept-members">
+    <div class="modal-content modal-lg">
+      <div class="modal-header">
+        <h3 id="modal-dept-members-title">Danh sách Thành viên Phòng Ban</h3>
+        <button class="btn-icon" onclick="App.closeModal('modal-dept-members')"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body">
+        <div style="display: flex; gap: 10px; margin-bottom: 18px;">
+          <select id="select-add-member" class="form-select" style="flex: 1;">
+            <option value="">-- Chọn nhân sự để thêm vào phòng --</option>
+          </select>
+          <button class="btn btn-primary" onclick="App.addMemberToDept()">
+            <i data-lucide="user-plus"></i>
+            <span>Thêm</span>
+          </button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Mã NV</th>
+                <th>Họ tên</th>
+                <th>Loại nhân sự</th>
+                <th>Chức vụ / Chuyên môn</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="dept-members-table-body">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="App.closeModal('modal-dept-members')">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTRACT MODAL -->
+  <div class="modal-overlay" id="modal-contract">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modal-contract-title">Hợp đồng Lao động</h3>
+        <button class="btn-icon" onclick="App.closeModal('modal-contract')"><i data-lucide="x"></i></button>
+      </div>
+      <form id="form-contract" onsubmit="App.saveContract(event)">
+        <div class="modal-body">
+          <div class="form-grid single-col">
+            <div class="form-group">
+              <label class="form-label">Mã hợp đồng <span style="color:var(--danger)">*</span></label>
+              <input type="text" id="hd-maHD" class="form-input" placeholder="VD: HD005" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Người lao động <span style="color:var(--danger)">*</span></label>
+              <select id="hd-maNV" class="form-select" required>
+                <option value="">-- Chọn nhân sự --</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Loại hợp đồng</label>
+              <select id="hd-loaiHD" class="form-select">
+                <option value="Chinh thuc">Chính thức</option>
+                <option value="Thu viec">Thử việc</option>
+                <option value="Thoi vu">Thời vụ</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Ngày ký kết (DD/MM/YYYY)</label>
+              <input type="text" id="hd-ngayKy" class="form-input" placeholder="01/01/2026" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Ngày hết hạn (DD/MM/YYYY)</label>
+              <input type="text" id="hd-ngayHetHan" class="form-input" placeholder="01/01/2029">
+              <span class="form-hint">Dùng để cảnh báo khi hợp đồng sắp hết hạn</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Lương thỏa thuận cơ bản (VND) <span style="color:var(--danger)">*</span></label>
+              <input type="number" id="hd-luong" class="form-input" placeholder="15000000" min="0" required>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="App.closeModal('modal-contract')">Hủy</button>
+          <button type="submit" class="btn btn-primary">Lưu hợp đồng</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ATTENDANCE MODAL / CALENDAR -->
+  <div class="modal-overlay" id="modal-attendance">
+    <div class="modal-content modal-lg">
+      <div class="modal-header">
+        <h3 id="modal-att-title">Chấm công Chi tiết & Lịch Tháng</h3>
+        <button class="btn-icon" onclick="App.closeModal('modal-attendance')"><i data-lucide="x"></i></button>
+      </div>
+      <form id="form-attendance" onsubmit="App.saveAttendanceRecord(event)">
+        <div class="modal-body">
+          <input type="hidden" id="att-emp-id">
+          <input type="hidden" id="att-month">
+          <input type="hidden" id="att-year">
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <div>
+              <h4 id="att-emp-name" style="font-size: 16px; font-weight: 600;">Nguyen Van An</h4>
+              <p id="att-period-desc" style="font-size: 13px; color: var(--text-secondary);">Kỳ công: Tháng 10/2026</p>
+            </div>
+            <div id="att-status-badge">
+              <span class="badge badge-warning">Đang chấm công</span>
+            </div>
+          </div>
+
+          <div class="form-grid" style="margin-bottom: 16px;">
+            <div class="form-group">
+              <label class="form-label">Số ngày công</label>
+              <input type="number" id="att-work-days" class="form-input" min="0" max="31" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Số ngày nghỉ</label>
+              <input type="number" id="att-leave-days" class="form-input" min="0" max="31" required>
+            </div>
+          </div>
+
+          <div style="margin-top: 16px;">
+            <label class="form-label">Lịch ngày công (Click ô để đổi: Xanh = Đi làm, Đỏ = Nghỉ, Trắng = Chưa điểm danh)</label>
+            <div class="calendar-grid" id="attendance-calendar-grid">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="btn-lock-attendance" onclick="App.lockCurrentAttendance()">
+            <i data-lucide="lock"></i>
+            <span>Chốt công tháng này</span>
+          </button>
+          <button type="button" class="btn btn-secondary" onclick="App.closeModal('modal-attendance')">Đóng</button>
+          <button type="submit" class="btn btn-primary" id="btn-save-attendance">Cập nhật công</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- KPI MODAL -->
+  <div class="modal-overlay" id="modal-kpi">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Đánh giá Điểm KPI</h3>
+        <button class="btn-icon" onclick="App.closeModal('modal-kpi')"><i data-lucide="x"></i></button>
+      </div>
+      <form id="form-kpi" onsubmit="App.saveKPI(event)">
+        <div class="modal-body">
+          <div class="form-grid single-col">
+            <div class="form-group">
+              <label class="form-label">Nhân sự <span style="color:var(--danger)">*</span></label>
+              <select id="kpi-input-maNV" class="form-select" required>
+                <option value="">-- Chọn nhân sự --</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Điểm KPI (0 - 100) <span style="color:var(--danger)">*</span></label>
+              <input type="number" id="kpi-input-score" class="form-input" min="0" max="100" step="0.5" placeholder="VD: 85.0" required>
+              <span class="form-hint">Mốc thưởng: &ge;90 (Xuất sắc), &ge;70 (Đạt), &lt;70 (Không thưởng)</span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="App.closeModal('modal-kpi')">Hủy</button>
+          <button type="submit" class="btn btn-primary">Lưu điểm KPI</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- PAY SLIP MODAL (xuatHTML C++ / PRINT) -->
+  <div class="modal-overlay" id="modal-payslip">
+    <div class="modal-content modal-lg">
+      <div class="modal-header">
+        <h3>Phiếu Lương Chi Tiết (C++ Format)</h3>
+        <button class="btn-icon" onclick="App.closeModal('modal-payslip')"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body" style="display: flex; justify-content: center; background: #f8fafc; padding: 24px;">
+        <div id="payslip-render-area" style="background: #fff; box-shadow: var(--shadow-md); padding: 16px; border-radius: 8px;">
+          <!-- xuatHTML injected here -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="App.closeModal('modal-payslip')">Đóng</button>
+        <button type="button" class="btn btn-primary" onclick="window.print()">
+          <i data-lucide="printer"></i>
+          <span>In Phiếu Lương</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONFIRM DELETE MODAL -->
+  <div class="modal-overlay" id="modal-confirm-delete">
+    <div class="modal-content" style="max-width: 440px;">
+      <div class="modal-header">
+        <h3>Xác nhận Xóa</h3>
+        <button class="btn-icon" onclick="App.closeModal('modal-confirm-delete')"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body">
+        <p id="confirm-delete-msg">Bạn có chắc chắn muốn xóa bản ghi này? Thao tác không thể hoàn tác.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="App.closeModal('modal-confirm-delete')">Hủy bỏ</button>
+        <button type="button" class="btn btn-danger" id="btn-confirm-delete-action">Xóa vĩnh viễn</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Application Script -->
+  <script src="js/app.js?v=1.3"></script>
+</body>
+</html>

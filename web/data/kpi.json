@@ -1,0 +1,42 @@
+[
+  {
+    "diemKPI": 85.0,
+    "hoTen": "Nguyen Van An",
+    "hopLe": true,
+    "loaiNhanVien": "Nhan Vien Toan Thoi Gian",
+    "maNV": "NV001",
+    "nam": "2026",
+    "thang": "10",
+    "tienThuong": 1000000.0
+  },
+  {
+    "diemKPI": 95.0,
+    "hoTen": "Pham Hoang Anh",
+    "hopLe": true,
+    "loaiNhanVien": "Chuyen gia",
+    "maNV": "CG001",
+    "nam": "2026",
+    "thang": "10",
+    "tienThuong": 5000000.0
+  },
+  {
+    "diemKPI": 92.0,
+    "hoTen": "Le Minh Quan",
+    "hopLe": true,
+    "loaiNhanVien": "Quan ly",
+    "maNV": "QL001",
+    "nam": "2026",
+    "thang": "10",
+    "tienThuong": 10000000.0
+  },
+  {
+    "diemKPI": 75.0,
+    "hoTen": "Tran Thi Bich",
+    "hopLe": true,
+    "loaiNhanVien": "Nhan vien ban thoi gian",
+    "maNV": "NV002",
+    "nam": "2026",
+    "thang": "10",
+    "tienThuong": 1000000.0
+  }
+]

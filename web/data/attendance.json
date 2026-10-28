@@ -1,0 +1,42 @@
+[
+  {
+    "hoTen": "Nguyen Van An",
+    "hopLe": true,
+    "maNhanVien": "NV001",
+    "nam": 2026,
+    "soNgayCong": 22,
+    "soNgayNghi": 1,
+    "thang": 10,
+    "trangThai": "Da chot cong"
+  },
+  {
+    "hoTen": "Pham Hoang Anh",
+    "hopLe": true,
+    "maNhanVien": "CG001",
+    "nam": 2026,
+    "soNgayCong": 22,
+    "soNgayNghi": 0,
+    "thang": 10,
+    "trangThai": "Da chot cong"
+  },
+  {
+    "hoTen": "Le Minh Quan",
+    "hopLe": true,
+    "maNhanVien": "QL001",
+    "nam": 2026,
+    "soNgayCong": 24,
+    "soNgayNghi": 0,
+    "thang": 10,
+    "trangThai": "Da chot cong"
+  },
+  {
+    "hoTen": "Tran Thi Bich",
+    "hopLe": true,
+    "maNhanVien": "NV002",
+    "nam": 2026,
+    "soNgayCong": 20,
+    "soNgayNghi": 2,
+    "thang": 10,
+    "trangThai": "Dang cham cong"
+  }
+]

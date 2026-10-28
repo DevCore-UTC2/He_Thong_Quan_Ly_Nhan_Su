@@ -1,0 +1,50 @@
+[
+  {
+    "hoTenNV": "Nguyen Van An",
+    "hopLe": true,
+    "loaiHopDong": "Chinh thuc",
+    "loaiNhanVien": "Nhan Vien Toan Thoi Gian",
+    "luongThoaThuan": 15000000.0,
+    "maHopDong": "HD001",
+    "maNV": "NV001",
+    "ngayHetHan": "01/01/2029",
+    "ngayKyKet": "01/01/2026",
+    "trangThaiNV": "Dang lam"
+  },
+  {
+    "hoTenNV": "Pham Hoang Anh",
+    "hopLe": true,
+    "loaiHopDong": "Chinh thuc",
+    "loaiNhanVien": "Chuyen gia",
+    "luongThoaThuan": 30000000.0,
+    "maHopDong": "HD002",
+    "maNV": "CG001",
+    "ngayHetHan": "01/03/2029",
+    "ngayKyKet": "01/03/2026",
+    "trangThaiNV": "Dang lam"
+  },
+  {
+    "hoTenNV": "Le Minh Quan",
+    "hopLe": true,
+    "loaiHopDong": "Chinh thuc",
+    "loaiNhanVien": "Quan ly",
+    "luongThoaThuan": 25000000.0,
+    "maHopDong": "HD003",
+    "maNV": "QL001",
+    "ngayHetHan": "01/02/2029",
+    "ngayKyKet": "01/02/2026",
+    "trangThaiNV": "Dang lam"
+  },
+  {
+    "hoTenNV": "Tran Thi Bich",
+    "hopLe": true,
+    "loaiHopDong": "Thoi vu",
+    "loaiNhanVien": "Nhan vien ban thoi gian",
+    "luongThoaThuan": 8000000.0,
+    "maHopDong": "HD004",
+    "maNV": "NV002",
+    "ngayHetHan": "01/11/2026",
+    "ngayKyKet": "01/05/2026",
+    "trangThaiNV": "Dang lam"
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "maPhongBan": "PB001",
+    "members": [
+      "NV001",
+      "CG001",
+      "QL001"
+    ],
+    "tenPhongBan": "Phong Ky Thuat"
+  },
+  {
+    "maPhongBan": "PB002",
+    "members": [
+      "NV002"
+    ],
+    "tenPhongBan": "Phong Kinh Doanh"
+  }
+]
