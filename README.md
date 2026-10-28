@@ -66,6 +66,9 @@ cmake --build . --config Release
 
 Sau khi tiến trình máy chủ thông báo Server started at http://localhost:8080, mở trình duyệt web và truy cập vào địa chỉ: http://localhost:8080
 
+## 📝 Danh sách API chính
+<img width="725" height="671" alt="image" src="https://github.com/user-attachments/assets/38668f8a-3b5a-45f4-aee6-d9ec3f3e22c5" />
+
 
 
 
